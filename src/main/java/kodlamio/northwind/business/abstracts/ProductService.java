@@ -1,0 +1,31 @@
+package kodlamio.northwind.business.abstracts;
+
+import kodlamio.northwind.core.utilities.results.DataResult;
+import kodlamio.northwind.core.utilities.results.Result;
+import kodlamio.northwind.entities.concretes.Product;
+import kodlamio.northwind.entities.concretes.dtos.ProductWithCategoryDto;
+
+import java.util.List;
+
+public interface ProductService {
+    DataResult<List<Product>> getAll();
+    DataResult<List<Product>> getAllSorted();
+    DataResult<List<Product>> getAll(int pageNo, int padeSize);
+    Result add(Product product);
+
+    DataResult<Product> getByProductName(String productName);
+
+    DataResult<Product> getByProductNameAndCategory(String productName, int categoryId);
+
+    DataResult<List<Product>> getByProductNameOrCategory(String productName, int categoryId);
+
+    DataResult<List<Product>> getByCategoryIn(List<Integer> categories);
+
+    DataResult<List<Product>> getByProductNameContains(String productName);
+
+    DataResult<List<Product>> getByProductNameStartsWith(String productName);
+
+    DataResult<List<Product>> getByNameAndCategory(String productName,int categoryId);
+
+    DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails();
+}
